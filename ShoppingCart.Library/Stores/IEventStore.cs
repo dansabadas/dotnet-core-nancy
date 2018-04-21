@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using Nancy;
 using ShoppingCart.Library.DomainModels;
 
+[assembly: IncludeInNancyAssemblyScanning]
 namespace ShoppingCart.Library.Stores
 {
   public interface IEventStore

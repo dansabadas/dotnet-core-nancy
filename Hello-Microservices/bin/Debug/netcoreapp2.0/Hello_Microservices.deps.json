@@ -3845,6 +3845,9 @@
         }
       },
       "ShoppingCart.Library/1.0.0": {
+        "dependencies": {
+          "Nancy": "2.0.0-clinteastwood"
+        },
         "runtime": {
           "ShoppingCart.Library.dll": {}
         },

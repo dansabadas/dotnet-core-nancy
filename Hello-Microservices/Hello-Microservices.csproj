@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>Hello_Microservices</AssemblyName>
+    <RootNamespace>Hello_Microservices</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +13,10 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
     <PackageReference Include="Nancy" Version="2.0.0-clinteastwood" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ShoppingCart.Library\ShoppingCart.Library.csproj" />
   </ItemGroup>
 
 </Project>

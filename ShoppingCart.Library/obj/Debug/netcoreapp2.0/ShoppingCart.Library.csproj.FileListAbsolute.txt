@@ -1,0 +1,8 @@
+C:\Dan\Work\git-hub\dotnet-core-nancy\ShoppingCart.Library\bin\Debug\netcoreapp2.0\ShoppingCart.Library.deps.json
+C:\Dan\Work\git-hub\dotnet-core-nancy\ShoppingCart.Library\bin\Debug\netcoreapp2.0\ShoppingCart.Library.dll
+C:\Dan\Work\git-hub\dotnet-core-nancy\ShoppingCart.Library\bin\Debug\netcoreapp2.0\ShoppingCart.Library.pdb
+C:\Dan\Work\git-hub\dotnet-core-nancy\ShoppingCart.Library\obj\Debug\netcoreapp2.0\ShoppingCart.Library.csproj.CoreCompileInputs.cache
+C:\Dan\Work\git-hub\dotnet-core-nancy\ShoppingCart.Library\obj\Debug\netcoreapp2.0\ShoppingCart.Library.AssemblyInfoInputs.cache
+C:\Dan\Work\git-hub\dotnet-core-nancy\ShoppingCart.Library\obj\Debug\netcoreapp2.0\ShoppingCart.Library.AssemblyInfo.cs
+C:\Dan\Work\git-hub\dotnet-core-nancy\ShoppingCart.Library\obj\Debug\netcoreapp2.0\ShoppingCart.Library.dll
+C:\Dan\Work\git-hub\dotnet-core-nancy\ShoppingCart.Library\obj\Debug\netcoreapp2.0\ShoppingCart.Library.pdb

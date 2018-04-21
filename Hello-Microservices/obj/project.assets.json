@@ -4802,6 +4802,16 @@
         "runtime": {
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
+      },
+      "ShoppingCart.Library/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/ShoppingCart.Library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ShoppingCart.Library.dll": {}
+        }
       }
     }
   },
@@ -12646,13 +12656,19 @@
         "windowsazure.storage.8.1.4.nupkg.sha512",
         "windowsazure.storage.nuspec"
       ]
+    },
+    "ShoppingCart.Library/1.0.0": {
+      "type": "project",
+      "path": "../ShoppingCart.Library/ShoppingCart.Library.csproj",
+      "msbuildProject": "../ShoppingCart.Library/ShoppingCart.Library.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.AspNetCore.All >= 2.0.7",
       "Microsoft.NETCore.App >= 2.0.0",
-      "Nancy >= 2.0.0-clinteastwood"
+      "Nancy >= 2.0.0-clinteastwood",
+      "ShoppingCart.Library >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -12666,7 +12682,7 @@
     },
     "restore": {
       "projectUniqueName": "C:\\Dan\\Work\\git-hub\\dotnet-core-nancy\\Hello-Microservices\\Hello-Microservices.csproj",
-      "projectName": "Hello-Microservices",
+      "projectName": "Hello_Microservices",
       "projectPath": "C:\\Dan\\Work\\git-hub\\dotnet-core-nancy\\Hello-Microservices\\Hello-Microservices.csproj",
       "packagesPath": "C:\\Users\\dan_s\\.nuget\\packages\\",
       "outputPath": "C:\\Dan\\Work\\git-hub\\dotnet-core-nancy\\Hello-Microservices\\obj\\",
@@ -12687,7 +12703,11 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Dan\\Work\\git-hub\\dotnet-core-nancy\\ShoppingCart.Library\\ShoppingCart.Library.csproj": {
+              "projectPath": "C:\\Dan\\Work\\git-hub\\dotnet-core-nancy\\ShoppingCart.Library\\ShoppingCart.Library.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

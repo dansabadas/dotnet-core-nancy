@@ -7,7 +7,7 @@ namespace Hello_Microservices.NancyModules
 {
   public class ShoppingCartModule : NancyModule
   {
-    public ShoppingCartModule(IShoppingCartStore shoppingCartStore, IProductCatalogueClient productCatalog) : base("/shoppingcart")
+    public ShoppingCartModule(IShoppingCartStore shoppingCartStore, IProductCatalogueClient productCatalog, IEventStore eventStore) : base("/shoppingcart")
     {
       Get("/{userid:int}", parameters =>
       {

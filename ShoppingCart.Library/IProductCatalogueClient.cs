@@ -28,12 +28,17 @@ namespace ShoppingCart.Library
 
     public Task<IEnumerable<ShoppingCartItem>>
       GetShoppingCartItems(int[] productCatalogueIds) =>
-        exponentialRetryPolicy.ExecuteAsync(async () => await GetItemsFromCatalogueService(productCatalogueIds).ConfigureAwait(false));
+        exponentialRetryPolicy.ExecuteAsync(
+          async () => await GetItemsFromCatalogueService(productCatalogueIds)
+            .ConfigureAwait(false)
+        );
 
     private async Task<IEnumerable<ShoppingCartItem>> GetItemsFromCatalogueService(int[] productCatalogueIds)
     {
-      var response = await RequestProductFromProductCatalogue(productCatalogueIds).ConfigureAwait(false);
-      return await ConvertToShoppingCartItems(response).ConfigureAwait(false);
+      var response = await RequestProductFromProductCatalogue(productCatalogueIds)
+        .ConfigureAwait(false);
+      return await ConvertToShoppingCartItems(response)
+        .ConfigureAwait(false);
     }
 
     private static async Task<HttpResponseMessage> RequestProductFromProductCatalogue(int[] productCatalogueIds)
@@ -42,14 +47,18 @@ namespace ShoppingCart.Library
       using (var httpClient = new HttpClient())
       {
         httpClient.BaseAddress = new Uri(productCatalogueBaseUrl);
-        return await httpClient.GetAsync(productsResource).ConfigureAwait(false);
+        return await httpClient
+          .GetAsync(productsResource)
+          .ConfigureAwait(false);
       }
     }
 
     private static async Task<IEnumerable<ShoppingCartItem>> ConvertToShoppingCartItems(HttpResponseMessage response)
     {
       response.EnsureSuccessStatusCode();
-      var products = JsonConvert.DeserializeObject<List<ProductCatalogueProduct>>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+      var products = JsonConvert.DeserializeObject<List<ProductCatalogueProduct>>(
+          await response.Content.ReadAsStringAsync()
+            .ConfigureAwait(false));
       return
         products
           .Select(p => new ShoppingCartItem(
@@ -57,7 +66,8 @@ namespace ShoppingCart.Library
             p.ProductName,
             p.ProductDescription,
             p.Price
-        ));
+          )
+        );
     }
 
     private class ProductCatalogueProduct

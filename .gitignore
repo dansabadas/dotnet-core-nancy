@@ -1,0 +1,5 @@
+*.suo
+Hello-Microservices/obj/
+Hello-Microservices/bin/
+ShoppingCart.Library/bin/
+ShoppingCart.Library/obj/

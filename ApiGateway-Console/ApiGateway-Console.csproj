@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>ApiGateway_Console</AssemblyName>
+    <StartupObject>ApiGateway_Console.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ShoppingCart.Library\ShoppingCart.Library.csproj" />
+  </ItemGroup>
+
+</Project>

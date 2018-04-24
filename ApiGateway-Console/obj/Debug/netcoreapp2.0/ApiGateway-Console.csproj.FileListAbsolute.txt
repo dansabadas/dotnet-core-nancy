@@ -1,0 +1,14 @@
+C:\dan\Code\GIT-HUB\dotnet-core-nancy\ApiGateway-Console\bin\Debug\netcoreapp2.0\ApiGateway_Console.deps.json
+C:\dan\Code\GIT-HUB\dotnet-core-nancy\ApiGateway-Console\bin\Debug\netcoreapp2.0\ApiGateway_Console.runtimeconfig.json
+C:\dan\Code\GIT-HUB\dotnet-core-nancy\ApiGateway-Console\bin\Debug\netcoreapp2.0\ApiGateway_Console.runtimeconfig.dev.json
+C:\dan\Code\GIT-HUB\dotnet-core-nancy\ApiGateway-Console\bin\Debug\netcoreapp2.0\ApiGateway_Console.dll
+C:\dan\Code\GIT-HUB\dotnet-core-nancy\ApiGateway-Console\bin\Debug\netcoreapp2.0\ApiGateway_Console.pdb
+C:\dan\Code\GIT-HUB\dotnet-core-nancy\ApiGateway-Console\bin\Debug\netcoreapp2.0\ShoppingCart.Library.dll
+C:\dan\Code\GIT-HUB\dotnet-core-nancy\ApiGateway-Console\bin\Debug\netcoreapp2.0\ShoppingCart.Library.pdb
+C:\dan\Code\GIT-HUB\dotnet-core-nancy\ApiGateway-Console\obj\Debug\netcoreapp2.0\ApiGateway-Console.csprojResolveAssemblyReference.cache
+C:\dan\Code\GIT-HUB\dotnet-core-nancy\ApiGateway-Console\obj\Debug\netcoreapp2.0\ApiGateway-Console.csproj.CoreCompileInputs.cache
+C:\dan\Code\GIT-HUB\dotnet-core-nancy\ApiGateway-Console\obj\Debug\netcoreapp2.0\ApiGateway-Console.AssemblyInfoInputs.cache
+C:\dan\Code\GIT-HUB\dotnet-core-nancy\ApiGateway-Console\obj\Debug\netcoreapp2.0\ApiGateway-Console.AssemblyInfo.cs
+C:\dan\Code\GIT-HUB\dotnet-core-nancy\ApiGateway-Console\obj\Debug\netcoreapp2.0\ApiGateway-Console.csproj.CopyComplete
+C:\dan\Code\GIT-HUB\dotnet-core-nancy\ApiGateway-Console\obj\Debug\netcoreapp2.0\ApiGateway_Console.dll
+C:\dan\Code\GIT-HUB\dotnet-core-nancy\ApiGateway-Console\obj\Debug\netcoreapp2.0\ApiGateway_Console.pdb

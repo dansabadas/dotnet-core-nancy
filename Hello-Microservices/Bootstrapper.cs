@@ -12,6 +12,6 @@ namespace Hello_Microservices
     //  }
 
     protected override Func<ITypeCatalog, NancyInternalConfiguration> InternalConfiguration
-      => NancyInternalConfiguration.WithOverrides(builder => builder.StatusCodeHandlers.Clear());
+      => NancyInternalConfiguration.WithOverrides(builder => builder.StatusCodeHandlers.Clear()); // when 500 or 404, no default HTML message will be generated!
   }
 }

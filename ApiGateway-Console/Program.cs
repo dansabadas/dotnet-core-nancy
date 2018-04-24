@@ -9,12 +9,21 @@ namespace ApiGateway_Console
   public class Program
   {
     private LoyaltyProgramClient client;
+    private EventSubscriber subscriber;
 
-    public static void Main(string[] arg) => new Program().Main();
+    public static void Main(string[] arg) => new Program().MainEventSubscriber();
 
-    public void Main()
+    public void MainEventSubscriber()
     {
-      this.client = new LoyaltyProgramClient("localhost:5000");
+      subscriber = new EventSubscriber("localhost:5000");
+      //Run(this);
+      subscriber.Start();
+      ReadLine();
+    }
+
+    public void MainLoyaltyProgramClient()
+    {
+      client = new LoyaltyProgramClient("localhost:5000");
       WriteLine("Welcome to the API Gateway Mock.");
 
       var cont = true;
@@ -77,12 +86,13 @@ namespace ApiGateway_Console
 
     private async void ProcessUpdateUser(string cmd)
     {
-      int userId;
-      if (!int.TryParse(cmd.Split(' ').Skip(1).First(), out userId))
-        WriteLine("Plaese speciffy user id as an int");
+      if (!int.TryParse(cmd.Split(' ').Skip(1).First(), out int userId))
+      {
+        WriteLine("Please specify user id as an int");
+      }
       else
       {
-        var response = this.client.QueryUser(userId).Result;
+        var response = client.QueryUser(userId).Result;
         if (response.StatusCode == System.Net.HttpStatusCode.OK)
         {
           var user = JsonConvert.DeserializeObject<LoyaltyProgramUser>(await response.Content.ReadAsStringAsync());
@@ -94,7 +104,7 @@ namespace ApiGateway_Console
                 user.Settings?.Interests.Union(newInterests).ToArray()
                 ?? newInterests.ToArray()
             };
-          PrettyPrintResponse(this.client.UpdateUser(user).Result);
+          PrettyPrintResponse(client.UpdateUser(user).Result);
         }
       }
     }

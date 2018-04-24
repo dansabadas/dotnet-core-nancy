@@ -1498,6 +1498,15 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "YamlDotNet/4.3.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.3/YamlDotNet.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/YamlDotNet.dll": {}
+        }
       }
     }
   },
@@ -5416,13 +5425,31 @@
         "system.xml.xmlserializer.4.0.11.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "YamlDotNet/4.3.1": {
+      "sha512": "PPpGdhPP14a/YlZgux3TD2XXz3TFHWdaYrFEbwQSTpDYdRIk0e+TWsfd7nxo8GpRTEhTEb5ByPp1SsSiC5qf9w==",
+      "type": "package",
+      "path": "yamldotnet/4.3.1",
+      "files": [
+        "lib/net20/YamlDotNet.dll",
+        "lib/net20/YamlDotNet.xml",
+        "lib/net35/YamlDotNet.dll",
+        "lib/net35/YamlDotNet.xml",
+        "lib/net45/YamlDotNet.dll",
+        "lib/net45/YamlDotNet.xml",
+        "lib/netstandard1.3/YamlDotNet.dll",
+        "lib/netstandard1.3/YamlDotNet.xml",
+        "yamldotnet.4.3.1.nupkg.sha512",
+        "yamldotnet.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.NETCore.App >= 2.0.0",
       "Nancy >= 2.0.0-clinteastwood",
-      "Polly >= 5.9.0"
+      "Polly >= 5.9.0",
+      "YamlDotNet >= 4.3.1"
     ]
   },
   "packageFolders": {
@@ -5479,6 +5506,10 @@
           "Polly": {
             "target": "Package",
             "version": "[5.9.0, )"
+          },
+          "YamlDotNet": {
+            "target": "Package",
+            "version": "[4.3.1, )"
           }
         },
         "imports": [

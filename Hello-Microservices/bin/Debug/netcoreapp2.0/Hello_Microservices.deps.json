@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "5836424d1ab59e40751da21298e7ec7ec855e333"
+    "signature": "400895bfca465f4a89500a846455f3b8a7bf14f6"
   },
   "compilationOptions": {
     "defines": [
@@ -3855,10 +3855,19 @@
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
       },
+      "YamlDotNet/4.3.1": {
+        "runtime": {
+          "lib/netstandard1.3/YamlDotNet.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.3/YamlDotNet.dll": {}
+        }
+      },
       "ShoppingCart.Library/1.0.0": {
         "dependencies": {
           "Nancy": "2.0.0-clinteastwood",
-          "Polly": "5.9.0"
+          "Polly": "5.9.0",
+          "YamlDotNet": "4.3.1"
         },
         "runtime": {
           "ShoppingCart.Library.dll": {}
@@ -6073,6 +6082,13 @@
       "sha512": "sha512-W6ZZ0/o7+3Qb77mRAQyLjPudHG3OMeeQ4p9yY13PUdJArmRCx2cLMm5F4tpIjJXxzHC0ew0oK7DMDGILMdfCnw==",
       "path": "windowsazure.storage/8.1.4",
       "hashPath": "windowsazure.storage.8.1.4.nupkg.sha512"
+    },
+    "YamlDotNet/4.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PPpGdhPP14a/YlZgux3TD2XXz3TFHWdaYrFEbwQSTpDYdRIk0e+TWsfd7nxo8GpRTEhTEb5ByPp1SsSiC5qf9w==",
+      "path": "yamldotnet/4.3.1",
+      "hashPath": "yamldotnet.4.3.1.nupkg.sha512"
     },
     "ShoppingCart.Library/1.0.0": {
       "type": "project",

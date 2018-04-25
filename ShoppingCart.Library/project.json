@@ -1,0 +1,12 @@
+﻿{
+  "dependencies": {
+    "Microsoft.NETCore.App": {
+      "version": "2.0.7",
+      "type": "default"
+    },
+    "Nancy": "2.0.0-clinteastwood",
+    "polly": "5.9.0",
+    "yamldotnet": "4.3.1",
+    "dapper": "1.50.4"
+  }
+}

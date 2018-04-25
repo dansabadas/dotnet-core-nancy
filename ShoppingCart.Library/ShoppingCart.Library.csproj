@@ -5,13 +5,38 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Cart\" />
+    <Compile Remove="Cart\**" />
+    <EmbeddedResource Remove="Cart\**" />
+    <None Remove="Cart\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="project.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="project.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.50.4" />
     <PackageReference Include="Nancy" Version="2.0.0-clinteastwood" />
     <PackageReference Include="Polly" Version="5.9.0" />
     <PackageReference Include="YamlDotNet" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System">
+      <HintPath>System</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>

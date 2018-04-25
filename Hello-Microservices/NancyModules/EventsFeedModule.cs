@@ -7,7 +7,7 @@ namespace Hello_Microservices.NancyModules
   {
     public EventsFeedModule(IEventStore eventStore) : base("/events")
     {
-      Get("/", _ =>
+      Get("/", async (_) =>
       {
         long firstEventSequenceNumber, lastEventSequenceNumber;
         if (!long.TryParse(Request.Query.start.Value, out firstEventSequenceNumber))
@@ -19,7 +19,7 @@ namespace Hello_Microservices.NancyModules
           lastEventSequenceNumber = long.MaxValue;
         }
 
-        return eventStore.GetEvents(firstEventSequenceNumber, lastEventSequenceNumber);
+        return await eventStore.GetEvents(firstEventSequenceNumber, lastEventSequenceNumber);
       });
     }
   }

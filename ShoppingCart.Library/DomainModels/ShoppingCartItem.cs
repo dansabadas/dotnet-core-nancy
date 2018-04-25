@@ -2,20 +2,23 @@
 {
   public class ShoppingCartItem
   {
-    public int ProductCatalogueId { get; }
+    public int ProductCatalogId { get; }
+
     public string ProductName { get; }
-    public string Desscription { get; }
+
+    public string Description { get; }
+
     public Money Price { get; }
 
-    public ShoppingCartItem(
-      int productCatalogueId,
-      string productName,
-      string description,
-      Money price)
+    public ShoppingCartItem()
     {
-      ProductCatalogueId = productCatalogueId;
+    }
+
+    public ShoppingCartItem(int productCatalogueId, string productName, string description, Money price)
+    {
+      ProductCatalogId = productCatalogueId;
       ProductName = productName;
-      Desscription = description;
+      Description = description;
       Price = price;
     }
 
@@ -27,13 +30,13 @@
       }
 
       var that = obj as ShoppingCartItem;
-      return ProductCatalogueId.Equals(that.ProductCatalogueId);
+      return ProductCatalogId.Equals(that.ProductCatalogId);
     }
 
     // override object.GetHashCode
     public override int GetHashCode()
     {
-      return ProductCatalogueId.GetHashCode();
+      return ProductCatalogId.GetHashCode();
     }
   }
 }

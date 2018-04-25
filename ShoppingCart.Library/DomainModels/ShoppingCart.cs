@@ -15,6 +15,15 @@ namespace ShoppingCart.Library.DomainModels
       UserId = userId;
     }
 
+    public ShoppingCart(int userId, IEnumerable<ShoppingCartItem> items)
+    {
+      UserId = userId;
+      foreach (var item in items)
+      {
+        _items.Add(item);
+      }
+    }
+
     public void AddItems(IEnumerable<ShoppingCartItem> shoppingCartItems, Stores.IEventStore eventStore)
     {
       foreach (var item in shoppingCartItems)
@@ -28,7 +37,7 @@ namespace ShoppingCart.Library.DomainModels
 
     public void RemoveItems(int[] productCatalogueIds, Stores.IEventStore eventStore)
     {
-      _items.RemoveWhere(i => productCatalogueIds.Contains(i.ProductCatalogueId));
+      _items.RemoveWhere(i => productCatalogueIds.Contains(i.ProductCatalogId));
     }
   }
 }

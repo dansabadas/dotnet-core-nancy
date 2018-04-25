@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ApiGateway-Console",
+    "\\ApiGateway-Console\\obj",
+    "\\Hello-Microservices",
+    "\\Hello-Microservices\\NancyModules",
+    "\\ShoppingCart.Library",
+    "\\ShoppingCart.Library\\db-scripts",
+    "\\ShoppingCart.Library\\DomainModels",
+    "\\ShoppingCart.Library\\Serialization",
+    "\\ShoppingCart.Library\\Stores"
+  ],
+  "SelectedNode": "\\ShoppingCart.Library\\Stores\\ShoppingCartStore.cs",
+  "PreviewInSolutionExplorer": false
+}

@@ -13,6 +13,7 @@ namespace Hello_Microservices.NancyModules
       Get("/{userid:int}", async (parameters) =>
       {
         var userId = (int)parameters.userid;
+        await eventStore.Raise("ShoppingCartQueried", new { UserId = userId });
         return await shoppingCartStore.Get(userId);
       });
 

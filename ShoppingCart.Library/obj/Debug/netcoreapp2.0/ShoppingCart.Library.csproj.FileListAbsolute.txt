@@ -15,3 +15,4 @@ C:\dan\Code\GIT-HUB\dotnet-core-nancy\ShoppingCart.Library\obj\Debug\netcoreapp2
 C:\dan\Code\GIT-HUB\dotnet-core-nancy\ShoppingCart.Library\obj\Debug\netcoreapp2.0\ShoppingCart.Library.AssemblyInfo.cs
 C:\dan\Code\GIT-HUB\dotnet-core-nancy\ShoppingCart.Library\obj\Debug\netcoreapp2.0\ShoppingCart.Library.dll
 C:\dan\Code\GIT-HUB\dotnet-core-nancy\ShoppingCart.Library\obj\Debug\netcoreapp2.0\ShoppingCart.Library.pdb
+C:\dan\Code\GIT-HUB\dotnet-core-nancy\ShoppingCart.Library\obj\Debug\netcoreapp2.0\ShoppingCart.Library.csprojResolveAssemblyReference.cache

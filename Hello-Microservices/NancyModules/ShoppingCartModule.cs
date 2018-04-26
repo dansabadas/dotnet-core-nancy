@@ -2,6 +2,8 @@
 using Nancy.ModelBinding;
 using ShoppingCart.Library;
 using ShoppingCart.Library.Stores;
+using System;
+using System.Diagnostics;
 
 namespace Hello_Microservices.NancyModules
 {
@@ -13,7 +15,15 @@ namespace Hello_Microservices.NancyModules
       Get("/{userid:int}", async (parameters) =>
       {
         var userId = (int)parameters.userid;
-        await eventStore.Raise("ShoppingCartQueried", new { UserId = userId });
+        try
+        {
+          await eventStore.Raise("ShoppingCartQueried", new { UserId = userId });
+        }
+        catch (Exception exc)
+        {
+          Debug.WriteLine(exc.Message);
+        }
+
         return await shoppingCartStore.Get(userId);
       });
 

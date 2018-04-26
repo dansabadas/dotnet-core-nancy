@@ -3,7 +3,6 @@ using Nancy.Responses.Negotiation;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using YamlDotNet.Serialization;
 
 namespace ShoppingCart.Library.Serialization

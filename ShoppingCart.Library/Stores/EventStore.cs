@@ -13,22 +13,22 @@ namespace ShoppingCart.Library.Stores
   {
     private const string __connectionString = @"Data Source=s12.winhost.com;Initial Catalog=DB_100072_eastwest;Persist Security Info=True;User ID=DB_100072_eastwest_user;Password=batran11";
 
-    private const string writeEventSql = @"insert into EventStore(Name, OccurredAt, Content) values (@Name, @OccurredAt, @Content)";
+    private const string writeEventSql = @"insert into dotnetcore.EventStore(Name, OccurredAt, Content) values (@Name, @OccurredAt, @Content)";
 
-    public Task Raise(string eventName, object content)
+    public async Task Raise(string eventName, object content)
     {
       var jsonContent = JsonConvert.SerializeObject(content);
       using (var conn = new SqlConnection(__connectionString))
       {
-        return
-          conn.ExecuteAsync(
-            writeEventSql,
-            new
-            {
-              Name = eventName,
-              OccurredAt = DateTimeOffset.Now,
-              Content = jsonContent
-            });
+        await
+            conn.ExecuteAsync(
+              writeEventSql,
+              new
+              {
+                Name = eventName,
+                OccurredAt = DateTimeOffset.Now,
+                Content = jsonContent
+              });
       }
     }
 

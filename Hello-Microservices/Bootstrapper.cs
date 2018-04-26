@@ -10,7 +10,7 @@ namespace Hello_Microservices
   {
     protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
     {
-      container.Register<IEventStore, EventStoreClientApi>();
+      container.Register<IEventStore, ShoppingCart.Library.Stores.EventStore>();
     }
 
     protected override Func<ITypeCatalog, NancyInternalConfiguration> InternalConfiguration

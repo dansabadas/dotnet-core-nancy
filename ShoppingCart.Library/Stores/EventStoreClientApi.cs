@@ -11,7 +11,7 @@ namespace ShoppingCart.Library.Stores
 {
   public class EventStoreClientApi : IEventStore
   {
-    private const string connectionString = "ConnectTo=discover://admin:changeit@127.0.0.1:2113/";
+    private const string connectionString = "ConnectTo=discover://admin:changeit@127.0.0.1:2113";
     private IEventStoreConnection connection = EventStoreConnection.Create(connectionString);
       
     public async Task Raise(string eventName, object content)
@@ -19,6 +19,7 @@ namespace ShoppingCart.Library.Stores
       try
       {
         //connection = EventStoreConnection.Create(connectionString);
+        //connection.ConnectAsync().Wait();
         await connection.ConnectAsync().ConfigureAwait(false);
         var contentJson = JsonConvert.SerializeObject(content);
         var metaDataJson =

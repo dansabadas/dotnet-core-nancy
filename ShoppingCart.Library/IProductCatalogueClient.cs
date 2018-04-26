@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace ShoppingCart.Library
@@ -23,8 +24,15 @@ namespace ShoppingCart.Library
           3,
           attempt => TimeSpan.FromMilliseconds(100 * Math.Pow(2, attempt)), (ex, _) => Console.WriteLine(ex.ToString()));
 
-    private static string productCatalogueBaseUrl = @"http://private-05cc8-chapter2productcataloguemicroservice.apiary-mock.com";
-    private static string getProductPathTemplate = "/products?productIds=[{0}]";
+    private static string __productCatalogueBaseUrl = @"http://private-05cc8-chapter2productcataloguemicroservice.apiary-mock.com";
+    private static string __getProductPathTemplate = "/products?productIds=[{0}]";
+
+    private readonly ICache _cache;
+
+    public ProductCatalogueClient(ICache cache)
+    {
+      _cache = cache;
+    }
 
     public Task<IEnumerable<ShoppingCartItem>>
       GetShoppingCartItems(int[] productCatalogueIds) =>
@@ -41,15 +49,47 @@ namespace ShoppingCart.Library
         .ConfigureAwait(false);
     }
 
-    private static async Task<HttpResponseMessage> RequestProductFromProductCatalogue(int[] productCatalogueIds)
+
+    private async Task<HttpResponseMessage> RequestProductFromProductCatalogue(int[] productCatalogueIds)
     {
-      var productsResource = string.Format(getProductPathTemplate, string.Join(",", productCatalogueIds));
-      using (var httpClient = new HttpClient())
+      var productsResource = string.Format(
+        __getProductPathTemplate, 
+        string.Join(",", productCatalogueIds)
+      );
+
+      var response = _cache.Get(productsResource) as HttpResponseMessage;
+      if (response == null)
       {
-        httpClient.BaseAddress = new Uri(productCatalogueBaseUrl);
-        return await httpClient
-          .GetAsync(productsResource)
-          .ConfigureAwait(false);
+        using (var httpClient = new HttpClient())
+        {
+          httpClient.BaseAddress = new Uri(__productCatalogueBaseUrl);
+          response = await httpClient.GetAsync(productsResource).ConfigureAwait(false);
+          AddToCache(productsResource, response);
+        }
+      }
+
+      return response;
+    }
+
+    private void AddToCache(string resource, HttpResponseMessage response)
+    {
+      var cacheHeader = response
+        .Headers
+        .FirstOrDefault(h => h.Key == "cache-control");
+
+      if (string.IsNullOrEmpty(cacheHeader.Key))
+      {
+        return;
+      }
+
+      var maxAge =
+        CacheControlHeaderValue
+          .Parse(cacheHeader.Value.ToString())
+          .MaxAge;
+
+      if (maxAge.HasValue)
+      {
+        _cache.Add(key: resource, value: response, ttl: maxAge.Value);
       }
     }
 

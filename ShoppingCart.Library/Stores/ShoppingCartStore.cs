@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 
@@ -49,6 +47,7 @@ namespace ShoppingCart.Library.Stores
     {
       using (var conn = new SqlConnection(__connectionString))
       {
+        await conn.OpenAsync();
         using (var tx = conn.BeginTransaction())
         {
           await conn
@@ -56,13 +55,23 @@ namespace ShoppingCart.Library.Stores
             .ConfigureAwait(false);
           foreach (var item in shoppingCart.Items)
           {
+            var dbPrice = item.Price?.Amount;
             await conn
               .ExecuteAsync(
                 addAllForShoppingCartSql,
-                item,
+                new {
+                  ShoppingCartId = 1, // this is hardcoded so it needs to have a 1 in the corresponding ShoppingCart parent table
+                  item.ProductCatalogId,
+                  item.ProductName,
+                  ProductDescription = item.Description,
+                  Amount = dbPrice.GetValueOrDefault(),
+                  Currency = item.Price?.Currency ?? string.Empty
+                },
                 tx)
             .ConfigureAwait(false);
           }
+
+          tx.Commit();
         }
       }
     }

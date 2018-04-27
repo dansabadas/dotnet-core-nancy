@@ -3,3 +3,6 @@ Hello-Microservices/obj/
 Hello-Microservices/bin/
 ShoppingCart.Library/bin/
 ShoppingCart.Library/obj/
+ApiGateway-Console/bin/
+LoyaltyProgram-UnitTests/bin/
+LoyaltyProgram-UnitTests/obj/

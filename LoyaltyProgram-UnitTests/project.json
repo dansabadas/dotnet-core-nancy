@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "Microsoft.NETCore.App": {
+      "version": "2.0.7",
+      "type": "platform"
+    },
+    "Nancy": "2.0.0-clinteastwood",
+    "xunit": "2.3.1",
+    "Nancy.Testing": "2.0.0-clinteastwood",
+    "ShoppingCart.Library":  {"target": "project"}
+  }
+}

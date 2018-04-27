@@ -32,25 +32,35 @@ namespace ApiGateway_Console
     {
       var response = await ReadEvents();
       if (response.StatusCode == HttpStatusCode.OK)
-        HandleEvents(await response.Content.ReadAsStringAsync());
+      {
+        await HandleEvents(await response.Content.ReadAsStringAsync());
+      }
       _timer.Start();
     }
 
     private async Task<HttpResponseMessage> ReadEvents()
     {
+      long startNumber = await ReadStartNumber().ConfigureAwait(false);
       using (var httpClient = new HttpClient())
       {
         httpClient.BaseAddress = new Uri($"http://{_loyaltyProgramHost}");
         httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-        var response = await httpClient.GetAsync($"/events/?start={_start}&end={_start + _chunkSize}");
+        var response = await httpClient.GetAsync($"/events/?start={startNumber}&end={_start + _chunkSize}");
         PrettyPrintResponse(response);
         return response;
       }
     }
 
-    private void HandleEvents(string content)
+    private long _startDbNumber = 0;
+    private Task<long> ReadStartNumber()
+    {
+      return Task.FromResult(_startDbNumber);
+    }
+
+    private async Task HandleEvents(string content)
     {
       WriteLine("Handling events");
+      var lastSucceededEvent = 0L;
       var events = JsonConvert.DeserializeObject<IEnumerable<Event>>(content);
       WriteLine(events);
       WriteLine(events.Count());
@@ -60,7 +70,16 @@ namespace ApiGateway_Console
         dynamic eventData = ev.Content;
         WriteLine("product name from data: " + eventData?.item?.productName ?? "NULL");
         _start = Math.Max(_start, ev.SequenceNumber + 1);
+        lastSucceededEvent = ev.SequenceNumber + 1;
       }
+
+      await WriteStartNumber(lastSucceededEvent);
+    }
+
+    private Task WriteStartNumber(long lastSucceededEvent)
+    {
+      _startDbNumber = lastSucceededEvent;  // TODO: write to some DB
+      return Task.CompletedTask;
     }
 
     public void Start()

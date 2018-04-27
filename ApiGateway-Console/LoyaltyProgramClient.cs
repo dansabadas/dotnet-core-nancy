@@ -10,7 +10,7 @@ namespace ApiGateway_Console
 {
   public class LoyaltyProgramClient
   {
-    private static Policy exponentialRetryPolicy =
+    private static Policy __exponentialRetryPolicy =
       Policy
         .Handle<Exception>()
         .WaitAndRetryAsync(
@@ -19,16 +19,21 @@ namespace ApiGateway_Console
           (_, __) => Console.WriteLine("retrying..." + _)
         );
 
-    private string hostName;
+    private static Policy __circuitBreaker =
+      Policy
+        .Handle<Exception>()
+        .CircuitBreaker(5, TimeSpan.FromMinutes(5));
+
+    private string _hostName;
 
     public LoyaltyProgramClient(string loyalProgramMicroserviceHostName)
     {
-      hostName = loyalProgramMicroserviceHostName;
+      _hostName = loyalProgramMicroserviceHostName;
     }
 
     public async Task<HttpResponseMessage> QueryUser(int userId)
     {
-      return await exponentialRetryPolicy.ExecuteAsync(() => DoUserQuery(userId));
+      return await __circuitBreaker.ExecuteAsync(() => DoUserQuery(userId));
     }
 
     private async Task<HttpResponseMessage> DoUserQuery(int userId)
@@ -37,7 +42,7 @@ namespace ApiGateway_Console
       using (var httpClient = new HttpClient())
       {
         httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-        httpClient.BaseAddress = new Uri($"http://{hostName}");
+        httpClient.BaseAddress = new Uri($"http://{_hostName}");
         var response = await httpClient.GetAsync(userResource);
         ThrowOnTransientFailure(response);
         return response;
@@ -51,7 +56,7 @@ namespace ApiGateway_Console
 
     public async Task<HttpResponseMessage> RegisterUser(LoyaltyProgramUser newUser)
     {
-      return await exponentialRetryPolicy.ExecuteAsync(() => DoRegisterUser(newUser));
+      return await __exponentialRetryPolicy.ExecuteAsync(() => DoRegisterUser(newUser));
     }
 
     private async Task<HttpResponseMessage> DoRegisterUser(LoyaltyProgramUser newUser)
@@ -60,7 +65,7 @@ namespace ApiGateway_Console
       {
         httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
         //httpClient.DefaultRequestHeaders.Add("Content-Type", "application/json"); // this is automatically added by the stringContent below
-        httpClient.BaseAddress = new Uri($"http://{hostName}");
+        httpClient.BaseAddress = new Uri($"http://{_hostName}");
         var stringContent = new StringContent(JsonConvert.SerializeObject(newUser), Encoding.UTF8, "application/json");
         var response = await httpClient.PostAsync("/users/", stringContent);
         ThrowOnTransientFailure(response);
@@ -70,7 +75,7 @@ namespace ApiGateway_Console
 
     public async Task<HttpResponseMessage> UpdateUser(LoyaltyProgramUser user)
     {
-      return await exponentialRetryPolicy.ExecuteAsync(() => DoUpdateUser(user));
+      return await __exponentialRetryPolicy.ExecuteAsync(() => DoUpdateUser(user));
     }
 
     private async Task<HttpResponseMessage> DoUpdateUser(LoyaltyProgramUser user)
@@ -78,7 +83,7 @@ namespace ApiGateway_Console
       using (var httpClient = new HttpClient())
       {
         httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-        httpClient.BaseAddress = new Uri($"http://{hostName}");
+        httpClient.BaseAddress = new Uri($"http://{_hostName}");
         var response = await httpClient.PutAsync($"/users/{user.Id}", new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"));
         ThrowOnTransientFailure(response);
         return response;

@@ -10,6 +10,12 @@ namespace Hello_Microservices
   {
     protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
     {
+      pipelines.OnError += (ctx, ex) =>
+      {
+        // write to central log store
+        return null;
+      };
+
       container.Register<IEventStore, ShoppingCart.Library.Stores.EventStore>();
     }
 

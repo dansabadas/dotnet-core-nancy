@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Hello-Microservices\Hello-Microservices.csproj" />
     <ProjectReference Include="..\ShoppingCart.Library\ShoppingCart.Library.csproj" />
   </ItemGroup>
 

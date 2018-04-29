@@ -1,6 +1,5 @@
 using Nancy;
 using Nancy.Testing;
-using System;
 using System.Threading.Tasks;
 using Xunit;
 

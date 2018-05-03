@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Nancy.Owin;
+using LibOwin;
 
 namespace Hello_Microservices
 {
@@ -15,14 +16,20 @@ namespace Hello_Microservices
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    public void Configure(IApplicationBuilder app, IHostingEnvironment envi)
     {
-      app.UseOwin(buildFunc =>
+      app.UseOwin(buildFunc =>  // let's you use OWIN with ASP.NET Core
       {
-        buildFunc(next => envi => {
-          System.Console.WriteLine("Got Request");
-          return next(envi);
-        });
+        buildFunc(next =>       // buildFunc builds an OWIN pipeline from MidFunc
+          env => 
+          {
+            var context = new OwinContext(env);
+            var method = context.Request.Method;
+            var path = context.Request.Path;
+            System.Console.WriteLine($"Got Request lambdas: {method} {path}");
+            return next(env);
+          });
+        buildFunc(next => new ConsoleMiddleware(next).Invoke);
         buildFunc.UseNancy();
       });
     }

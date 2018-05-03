@@ -7,3 +7,5 @@ ApiGateway-Console/bin/
 LoyaltyProgram-UnitTests/bin/
 LoyaltyProgram-UnitTests/obj/
 ApiGateway-Console/obj/
+LoyaltyProgram-IntegrationTest/obj/
+LoyaltyProgram-IntegrationTest/bin/

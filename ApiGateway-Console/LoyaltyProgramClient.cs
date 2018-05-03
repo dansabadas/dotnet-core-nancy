@@ -51,7 +51,10 @@ namespace ApiGateway_Console
 
     private static void ThrowOnTransientFailure(HttpResponseMessage response)
     {
-      if (((int)response.StatusCode) < 200 || ((int)response.StatusCode) > 499) throw new Exception(response.StatusCode.ToString());
+      if (((int)response.StatusCode) < 200 || ((int)response.StatusCode) > 499)
+      {
+        throw new Exception(response.StatusCode.ToString());
+      }
     }
 
     public async Task<HttpResponseMessage> RegisterUser(LoyaltyProgramUser newUser)

@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.Library", "..\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway-Console", "..\ApiGateway-Console\ApiGateway-Console.csproj", "{F4E850B8-F83A-4889-9404-BF61CCC25D71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoyaltyProgram-UnitTests", "..\LoyaltyProgram-UnitTests\LoyaltyProgram-UnitTests.csproj", "{ECBB5381-E7A5-419D-8549-BA170BBAC870}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoyaltyProgram-UnitTests", "..\LoyaltyProgram-UnitTests\LoyaltyProgram-UnitTests.csproj", "{ECBB5381-E7A5-419D-8549-BA170BBAC870}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoyaltyProgram-IntegrationTest", "..\LoyaltyProgram-IntegrationTest\LoyaltyProgram-IntegrationTest.csproj", "{415F9E13-B20E-4E15-8C49-3F1F17C7BDC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{ECBB5381-E7A5-419D-8549-BA170BBAC870}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECBB5381-E7A5-419D-8549-BA170BBAC870}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECBB5381-E7A5-419D-8549-BA170BBAC870}.Release|Any CPU.Build.0 = Release|Any CPU
+		{415F9E13-B20E-4E15-8C49-3F1F17C7BDC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{415F9E13-B20E-4E15-8C49-3F1F17C7BDC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{415F9E13-B20E-4E15-8C49-3F1F17C7BDC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{415F9E13-B20E-4E15-8C49-3F1F17C7BDC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

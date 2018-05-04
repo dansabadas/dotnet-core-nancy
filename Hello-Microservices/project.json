@@ -7,6 +7,8 @@
     "Microsoft.AspNetCore.Server.IISIntegration": "2.0.2",
     "Microsoft.AspNetCore.Server.Kestrel": "2.0.2",
     "Microsoft.AspNetCore.Owin": "2.0.2",
-    "Nancy": "2.0.0-clinteastwood"
+    "Nancy": "2.0.0-clinteastwood",
+    "Serilog": "2.6.0",
+    "Serilog.Sinks.ColoredConsole": "3.0.1"
   }
 }

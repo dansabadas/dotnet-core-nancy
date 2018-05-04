@@ -3,6 +3,7 @@ using Nancy;
 using Nancy.Testing;
 using Xunit;
 using ShoppingCart.Library.DomainModels;
+using Microsoft.Extensions.Logging;
 
 namespace LoyaltyProgram_UnitTests
 {
@@ -12,8 +13,10 @@ namespace LoyaltyProgram_UnitTests
 
     public UserModule_should()
     {
+      var log = ShoppingCart.Library.ILoggerFactory.ConfigureLogger();
+
       _sut = new Browser(
-        new Hello_Microservices.Bootstrapper(), // this Bootstrapper class is everything, it plugs the routes!
+        new Hello_Microservices.Bootstrapper(log), // this Bootstrapper class is everything, it plugs the routes!
         defaultsTo => defaultsTo.Accept("application/json")
       );
     }

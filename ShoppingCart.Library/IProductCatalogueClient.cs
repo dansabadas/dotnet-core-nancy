@@ -28,10 +28,12 @@ namespace ShoppingCart.Library
     private static string __getProductPathTemplate = "/products?productIds=[{0}]";
 
     private readonly ICache _cache;
+    private readonly IHttpClientFactory _httpClientFactory;
 
-    public ProductCatalogueClient(ICache cache)
+    public ProductCatalogueClient(ICache cache, IHttpClientFactory httpClientFactory)
     {
       _cache = cache;
+      _httpClientFactory = httpClientFactory;
     }
 
     public Task<IEnumerable<ShoppingCartItem>>
@@ -60,9 +62,8 @@ namespace ShoppingCart.Library
       var response = _cache.Get(productsResource) as HttpResponseMessage;
       if (response == null)
       {
-        using (var httpClient = new HttpClient())
+        using (var httpClient = _httpClientFactory.Create(new Uri(__productCatalogueBaseUrl)))
         {
-          httpClient.BaseAddress = new Uri(__productCatalogueBaseUrl);
           response = await httpClient.GetAsync(productsResource).ConfigureAwait(false);
           AddToCache(productsResource, response);
         }

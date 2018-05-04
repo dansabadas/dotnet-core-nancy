@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Nancy.Owin;
 using LibOwin;
+using ShoppingCart.Library;
+using ShoppingCart.Library.OwinMiddleware;
 
 namespace Hello_Microservices
 {
@@ -18,8 +20,11 @@ namespace Hello_Microservices
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IHostingEnvironment envi)
     {
+      var log = ILoggerFactory.ConfigureLogger();
+
       app.UseOwin(buildFunc =>  // let's you use OWIN with ASP.NET Core
       {
+        buildFunc(next => CorrelationToken.Middleware(next));
         buildFunc(next =>       // buildFunc builds an OWIN pipeline from MidFunc
           env => 
           {
@@ -30,7 +35,11 @@ namespace Hello_Microservices
             return next(env);
           });
         buildFunc(next => new ConsoleMiddleware(next).Invoke);
-        buildFunc.UseNancy();
+        buildFunc(next => RequestLogging.Middleware(next, log));
+        buildFunc(next => PerformanceLogging.Middleware(next, log));
+        buildFunc(next => new MonitoringMiddleware(next, ShoppingCart.Library.Stores.ShoppingCartStore.HealthCheck).Invoke);
+        //buildFunc.UseNancy(); // this uses the default parameterless Nancy bootstrapper
+        buildFunc.UseNancy(opt => opt.Bootstrapper = new Bootstrapper(log));
       });
     }
   }

@@ -10,6 +10,7 @@
         "dapper": "1.50.4",
         "EventStore.ClientAPI.NetCore": "4.1.0.23",
         "Serilog": "2.6.0",
-        "Serilog.Sinks.ColoredConsole": "3.0.1"
+        "Serilog.Sinks.ColoredConsole": "3.0.1",
+        "IdentityServer4": "2.2.0"
     }
 }

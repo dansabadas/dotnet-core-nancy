@@ -5,16 +5,37 @@ using Nancy.Owin;
 using LibOwin;
 using ShoppingCart.Library;
 using ShoppingCart.Library.OwinMiddleware;
+using System.Security.Cryptography.X509Certificates;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+using ShoppingCart.Library.DomainModels.LoginConfiguration;
 
 namespace Hello_Microservices
 {
   public class Startup
   {
+    private readonly IHostingEnvironment environment;
+
+    public Startup(IHostingEnvironment env)
+    {
+      environment = env;
+    }
+
     // This method gets called by the runtime. Use this method to add services to the container.
     // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
     public void ConfigureServices(IServiceCollection services)
     {
       //services.AddTransient<IShoppingCartStore>
+      //var cert = new X509Certificate2(Path.Combine(this.environment.ContentRootPath, "idsrv3test.pfx"), "idsrv3test");
+
+      //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+      //var builder = services.AddIdentityServer().AddSigningCredential(cert);
+
+      //builder.AddInMemoryClients(Clients.Get());
+      //builder.AddInMemoryApiResources(Scopes.Get());
+      //builder.AddInMemoryIdentityResources(Resources.GetIdentityResources());//Users.Get()
+
+      //services.AddMvc();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

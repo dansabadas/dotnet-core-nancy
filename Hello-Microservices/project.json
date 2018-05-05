@@ -1,14 +1,21 @@
 ﻿{
-  "dependencies": {
-    "Microsoft.NETCore.App": {
-      "version": "2.0.7",
-      "type": "platform"
-    },
-    "Microsoft.AspNetCore.Server.IISIntegration": "2.0.2",
-    "Microsoft.AspNetCore.Server.Kestrel": "2.0.2",
-    "Microsoft.AspNetCore.Owin": "2.0.2",
-    "Nancy": "2.0.0-clinteastwood",
-    "Serilog": "2.6.0",
-    "Serilog.Sinks.ColoredConsole": "3.0.1"
-  }
+    "dependencies": {
+        "Microsoft.NETCore.App": {
+            "version": "2.0.7",
+            "type": "platform"
+        },
+        "Microsoft.AspNetCore.Server.IISIntegration": "2.0.2",
+        "Microsoft.AspNetCore.Server.Kestrel": "2.0.2",
+        "Microsoft.AspNetCore.Owin": "2.0.2",
+        "Nancy": "2.0.0-clinteastwood",
+        "Serilog": "2.6.0",
+        "Serilog.Sinks.ColoredConsole": "3.0.1",
+        "IdentityServer4": "2.2.0",
+        "Microsoft.AspNetCore.StaticFiles": "2.0.2",
+        "Microsoft.AspNetCore.Mvc": "2.0.3",
+        "Microsoft.Extensions.Logging.Console": "2.0.1",
+        "Microsoft.Extensions.Logging.Debug": "2.0.1",
+        "Microsoft.AspNetCore.Authentication.Cookies": "2.0.3",
+        "Microsoft.AspNetCore.Authentication.OpenIdConnect": "2.0.3"
+    }
 }
